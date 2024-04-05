@@ -10,7 +10,7 @@ const html =fs.readFileSync('./template/index.html', 'utf-8')
 const server1=http.createServer((request,response)=>{
 let path=request.url
 if(path===''||path.toLowerCase()==='/home'){
-    response.end(html)
+    response.end(html.replace('{{%CONTENT%}}','You are in home page'))
 }else if(path.toLowerCase()==='/about'){
     response.end( html.replace('{{%CONTENT%}}','You are in about page'))
 }else if(path.toLowerCase()==='/contact'){
