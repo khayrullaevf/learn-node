@@ -1,62 +1,106 @@
 [
-    {
-      "id": 1,
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      "price": 109.95,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 3.9,
-        "count": 120
-      }
-    },
-    {
-      "id": 2,
-      "title": "Mens Casual Premium Slim Fit T-Shirts ",
-      "price": 22.3,
-      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      "rating": {
-        "rate": 4.1,
-        "count": 259
-      }
-    },
-    {
-      "id": 3,
-      "title": "Mens Cotton Jacket",
-      "price": 55.99,
-      "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
-      "rating": {
-        "rate": 4.7,
-        "count": 500
-      }
-    },
-    {
-      "id": 4,
-      "title": "Mens Casual Slim Fit",
-      "price": 15.99,
-      "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-      "rating": {
-        "rate": 2.1,
-        "count": 430
-      }
-    },
-    {
-      "id": 5,
-      "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
-      "price": 695,
-      "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
-      "category": "jewelery",
-      "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
-      "rating": {
-        "rate": 4.6,
-        "count": 400
-      }
-    }
-  ]
+  {
+    "id": 0,
+    "name": "APPLE iPhone SE",
+    "color":"Black",
+    "ROM": 128,
+    "price": 990,
+    "modeName": "iPhone SE",
+    "modelNumber": "MHGT3HN/A",
+    "size": "11.94 cm (4.7 inch) Retina HD Display",
+    "camera": "12MP Rear Camera | 7MP Front Camera",
+    "Description": "Widescreen HD LCD Retina Multi-touch IPS Display (1400:1 Contrast Ratio (Typical), True Tone Display, Wide Color Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Display Zoom, Reachability)",
+    "productImage":"http://atlas-content-cdn.pixelsquid.com/stock-images/iphone-x-smartphone-xwVXQLD-600.jpg"
+  },
+  {
+    "id": 1,
+    "name": "APPLE iPhone XR",
+    "color":"White",
+    "ROM": 64,
+    "price": 790,
+    "modeName": "iPhone XR",
+    "modelNumber": "MH6N3HN/A",
+    "size": "15.49 cm (6.1 inch) Display",
+    "camera": "12MP Rear Camera | 7MP Front Camera",
+    "Description": "1400:1 Contrast Ratio (Typical), True Tone Display (Six-channel Light Sensor), Wide Colour Display (P3), 625 nits Maximum Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Support for Display of Multiple Languages and Characters Simultaneously, Liquid Retina HD Display, Tap to Wake, Wide Colour Gamut",
+    "productImage":"https://c8.alamy.com/zooms/6/e98284ded5444c08949d7fd9f2bae166/2cd68c5.jpg"
+  },
+  {
+    "id": 2,
+    "name": "APPLE iPhone 11",
+    "color":"White",
+    "ROM": 64,
+    "price": 740,
+    "modeName": "iPhone 11",
+    "modelNumber": "MHDC3HN/A",
+    "size": "15.49 cm (6.1 inch) Liquid Retina HD",
+    "camera": "12MP + 12MP | 12MP Front Camera",
+    "Description": "1400:1 Contrast Ratio (Typical), True Tone Display, Wide Colour Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint Resistant Oleophobic Coating, Support for Display of Multiple Languages and Characters Simultaneously",
+    "productImage":"https://png.pngtree.com/png-vector/20201230/ourlarge/pngtree-smart-phone-vector-3d-style-mobile-design-mockup-png-image_2679535.jpg"
+  },
+  {
+    "id": 3,
+    "name": "APPLE iPhone XR",
+    "color":"Yellow",
+    "ROM": 128,
+    "price": 999,
+    "modeName": "iPhone XR",
+    "modelNumber": "MHDC4HN/A",
+    "size": "15.49 cm (6.1 inch) Liquid Retina HD",
+    "camera": "12MP + 12MP | 12MP Front Camera",
+    "Description": "1400:1 Contrast Ratio (Typical), True Tone Display, Wide Colour Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint Resistant Oleophobic Coating, Support for Display of Multiple Languages and Characters Simultaneously",
+    "productImage":"https://png.pngtree.com/png-vector/20201230/ourlarge/pngtree-vector-3d-style-smart-phone-mockup-design-png-image_2679529.jpg"
+  },
+  {
+    "id": 4,
+    "name": "APPLE iPhone 12 Mini",
+    "color":"Purple",
+    "ROM": 64,
+    "price": 720,
+    "modeName": "iPhone 12",
+    "modelNumber": "MGJE3HN/A",
+    "size": "13.72 cm (5.4 inch) Super Retina XDR Display",
+    "camera": "12MP + 12MP | 12MP Front Camera",
+    "Description": "Dive into a world of crystal-clear visuals with the Super Retina XDR Display of the iPhone 12 Mini. This beast of a smartphone packs the A14 Bionic chip to make for blazing-fast performance speeds. On top of that, its Dual-camera System, along with Night Mode, helps you click amazing pictures and selfies even when the lighting isn’t as good as you’d want it to be.",
+    "productImage":"https://cdn1.vectorstock.com/i/1000x1000/70/05/realistic-frameless-smartphone-mock-up-3d-vector-33107005.jpg"
+  },
+  {
+    "id": 5,
+    "name": "APPLE iPhone 11",
+    "color":"Red",
+    "ROM": 128,
+    "price": 990,
+    "modeName": "iPhone 11",
+    "modelNumber": "MHDC3HN/A",
+    "size": "15.49 cm (6.1 inch) Liquid Retina HD",
+    "camera": "12MP + 12MP | 12MP Front Camera",
+    "Description": "1400:1 Contrast Ratio (Typical), True Tone Display, Wide Colour Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint Resistant Oleophobic Coating, Support for Display of Multiple Languages and Characters Simultaneously",
+    "productImage":"https://previews.123rf.com/images/barmaleeva/barmaleeva2003/barmaleeva200300004/141800762-white-realistic-smartphone-mockup-3d-mobile-phone-with-blank-white-screen-modern-vector-cell-phone-t.jpg"
+  },
+  {
+    "id": 6,
+    "name": "APPLE iPhone SE",
+    "color":"White",
+    "ROM": 64,
+    "price": 780,
+    "modeName": "iPhone SE",
+    "modelNumber": "MHGT3HN/A",
+    "size": "11.94 cm (4.7 inch) Retina HD Display",
+    "camera": "12MP Rear Camera | 7MP Front Camera",
+    "Description": "Widescreen HD LCD Retina Multi-touch IPS Display (1400:1 Contrast Ratio (Typical), True Tone Display, Wide Color Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Display Zoom, Reachability)",
+    "productImage":"http://atlas-content-cdn.pixelsquid.com/stock-images/iphone-x-smartphone-xwVXQLD-600.jpg"
+  },
+  {
+    "id": 7,
+    "name": "APPLE iPhone 12",
+    "color":"Blue",
+    "ROM": 64,
+    "price": 780,
+    "modeName": "iPhone 12",
+    "modelNumber": "MHGT3HN/A",
+    "size": "11.94 cm (4.7 inch) Retina HD Display",
+    "camera": "12MP Rear Camera | 7MP Front Camera",
+    "Description": "Widescreen HD LCD Retina Multi-touch IPS Display (1400:1 Contrast Ratio (Typical), True Tone Display, Wide Color Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Display Zoom, Reachability)",
+    "productImage":"https://cdn1.vectorstock.com/i/1000x1000/70/05/realistic-frameless-smartphone-mock-up-3d-vector-33107005.jpg"
+  }
+]
