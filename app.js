@@ -1,8 +1,13 @@
 const http = require("http");
 const fs = require("fs");
 const url = require("url");
-const replaceHtml = require("./modules/replaceHtml.js");
+const events = require("events");
 
+//USER DEFINED MODULE
+const replaceHtml = require("./modules/replaceHtml.js");
+const user = require("./modules/user");
+
+//READING HTML FILE
 const html = fs.readFileSync("./template/index.html", "utf-8");
 let products = JSON.parse(fs.readFileSync("./data/product.json", "utf-8"));
 let productListHmtl = fs.readFileSync("./template/product-list.html", "utf-8");
@@ -10,7 +15,6 @@ let productDetailHmtl = fs.readFileSync(
   "./template/product-details.html",
   "utf-8"
 );
-
 
 //MODULE HAS BEEN CREATED FOR replceHtml FUNCTION
 // function replaceHtml(template,product){
@@ -28,48 +32,50 @@ let productDetailHmtl = fs.readFileSync(
 //   return output;
 // }
 
+//CREATE SERVER
 const server1 = http.createServer((request, response) => {
-  let { query, pathname: path } = url.parse(request.url, true);
-  if (path === "/" || path.toLowerCase() === "/home") {
-    response.writeHead(200, {
-      "Content-type": "text/html",
-    });
-    response.end(html.replace("{{%CONTENT%}}", "You are in home page"));
-  } else if (path.toLowerCase() === "/about") {
-    response.writeHead(200, {
-      "Content-type": "text/html",
-    });
-    response.end(html.replace("{{%CONTENT%}}", "You are in about page"));
-  } else if (path.toLowerCase() === "/contact") {
-    response.writeHead(200, {
-      "Content-type": "text/html",
-    });
-    response.end(html.replace("{{%CONTENT%}}", "You are in contact page"));
-  } else if (path.toLowerCase() === "/products") {
-    if (!query.id) {
-      let productsHtmlArray = products.map((prod) => {
-        return replaceHtml(productListHmtl, prod);
-      });
-      response.writeHead(200, { "Content-type": "text/html" });
-      let productResponseHtml = html.replace(
-        "{{%CONTENT%}}",
-        productsHtmlArray.join(",")
-      );
-      response.end(productResponseHtml);
-    } else {
-      let prodi = products[query.id];
-      let productDetailResponseHtml = replaceHtml(productDetailHmtl, prodi);
-      console.log(productDetailResponseHtml);
-      response.end(html.replace("{{%CONTENT%}}", productDetailResponseHtml));
-    }
-  } else {
-    response.writeHead(200, {
-      "Content-type": "text/html",
-    });
-    response.end(html.replace("{{%CONTENT%}}", "ERROR 404"));
-  }
+  //DESCTURCT QUERY AND PATH FROM URL
+//   let { query, pathname: path } = url.parse(request.url, true);
+//   if (path === "/" || path.toLowerCase() === "/home") {
+//     response.writeHead(200, {
+//       "Content-type": "text/html",
+//     });
+//     response.end(html.replace("{{%CONTENT%}}", "You are in home page"));
+//   } else if (path.toLowerCase() === "/about") {
+//     response.writeHead(200, {
+//       "Content-type": "text/html",
+//     });
+//     response.end(html.replace("{{%CONTENT%}}", "You are in about page"));
+//   } else if (path.toLowerCase() === "/contact") {
+//     response.writeHead(200, {
+//       "Content-type": "text/html",
+//     });
+//     response.end(html.replace("{{%CONTENT%}}", "You are in contact page"));
+//   } else if (path.toLowerCase() === "/products") {
+//     if (!query.id) {
+//       let productsHtmlArray = products.map((prod) => {
+//         return replaceHtml(productListHmtl, prod);
+//       });
+//       response.writeHead(200, { "Content-type": "text/html" });
+//       let productResponseHtml = html.replace(
+//         "{{%CONTENT%}}",
+//         productsHtmlArray.join(",")
+//       );
+//       response.end(productResponseHtml);
+//     } else {
+//       let prodi = products[query.id];
+//       let productDetailResponseHtml = replaceHtml(productDetailHmtl, prodi);
+//       response.end(html.replace("{{%CONTENT%}}", productDetailResponseHtml));
+//     }
+//   } else {
+//     response.writeHead(200, {
+//       "Content-type": "text/html",
+//     });
+//     response.end(html.replace("{{%CONTENT%}}", "ERROR 404"));
+//   }
 });
 
+//START SERVER
 server1.listen(8000, "127.0.0.1", () => {
   console.log("Server has been started");
 });
@@ -118,3 +124,53 @@ server1.listen(8000, "127.0.0.1", () => {
 //     console.log('Interface closed');
 //     process.exit()
 // })
+
+
+
+//CUSTOM EVENT EMITTER
+
+let myEmitter = new user();
+
+myEmitter.on("userCreated", (id, name) => {
+  console.log(`New user ${name} with ID ${id} is created`);
+});
+myEmitter.on("userCreated", (id, name) => {
+  console.log(`New user ${name} with ID ${id} is added to DATABSE`);
+});
+
+myEmitter.emit("userCreated", "F102", "Fazliddin");
+
+
+//STREAMING
+//SOLUTION1
+// server1.on("request", (req, res) => {
+//   fs.readFile("./files/large.txt", (err, data) => {
+//     if (err) {
+//       res.end("Something went wrong");
+//       return
+//     }
+//     res.end(data);
+//   });
+// });
+
+//SOLUTION2
+// server1.on("request", (req, res) => {
+//    let rs=fs.createReadStream('./files/large.txt')
+
+//    rs.on('data',(chunk)=>{
+
+//     res.write(chunk)
+
+//    })
+//    rs.on('end',()=>{
+//     res.end()
+//    })
+//    rs.on('error',(error)=>{
+//     res.end(error.message)
+//    })
+// });
+//SOLUTION3
+server1.on('request',(req,res)=>{
+    let rs = fs.createReadStream("./files/large.txt");
+    rs.pipe(res)
+})
