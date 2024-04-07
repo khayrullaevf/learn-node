@@ -8,30 +8,28 @@ const url=require('url')
 
 const html =fs.readFileSync('./template/index.html', 'utf-8')
 let products=JSON.parse(fs.readFileSync('./data/product.json', 'utf-8'))
-
 let productListHmtl=fs.readFileSync('./template/product-list.html','utf-8')
+let productDetailHmtl = fs.readFileSync("./template/product-details.html", "utf-8");
 
-let productsHtmlArray=products.map((prod)=>{
-
-    let output=productListHmtl.replace('{{%IMAGE%}}',prod.productImage)
-    output=output.replace('{{%NAME%}}',prod.name)
-    output=output.replace('{{%MODELNAME%}}',prod.modeName)
-    output=output.replace('{{%MODELNO%}}',prod.modelNumber)
-    output=output.replace('{{%SIZE%}}',prod.size)
-    output=output.replace('{{%CAMERA%}}',prod.camera)
-    output=output.replace('${{%PRICE%}}',prod.price)
-    output=output.replace('{{%COLOR%}}',prod.color)
-    output=output.replace('{{%ID%}}',prod.id)
-    return output
-
-})
+function replaceHtml(template,product){
+  let output = template.replace("{{%IMAGE%}}", product.productuctImage);
+  output = output.replace("{{%NAME%}}", product.name);
+  output = output.replace("{{%MODELNAME%}}", product.modeName);
+  output = output.replace("{{%MODELNO%}}", product.modelNumber);
+  output = output.replace("{{%SIZE%}}", product.size);
+  output = output.replace("{{%CAMERA%}}", product.camera);
+  output = output.replace("${{%PRICE%}}", product.price);
+  output = output.replace("{{%COLOR%}}", product.color);
+  output = output.replace("{{%ID%}}", product.id);
+  output = output.replace("{{%ROM%}}", product.ROM);
+  output = output.replace("{{%DESC%}}", product.Description);
+  return output;
+}
 
 
 const server1=http.createServer((request,response)=>{
 let {query,pathname:path}=url.parse(request.url, true)
-// let path=request.url
-if(path===''||path.toLowerCase()==='/home'){
-    
+if(path==='/'||path.toLowerCase()==='/home'){
     response.writeHead(200,{
         'Content-type':'text/html'
     })
@@ -53,12 +51,18 @@ if(path===''||path.toLowerCase()==='/home'){
 
 else if(path.toLowerCase()==='/products'){
     if(!query.id){
+        let productsHtmlArray=products.map((prod)=>{
+           return replaceHtml(productListHmtl,prod);
+        })
         response.writeHead(200,{ 'Content-type':'text/html'})
         let productResponseHtml=html.replace('{{%CONTENT%}}',productsHtmlArray.join(','))
-        response.end(html.replace('{{%CONTENT%}}',productResponseHtml))
-        console.log(productsHtmlArray.join(','));
+        response.end(productResponseHtml)
+    
     }else{
-        response.end('This is product with Id '+query.id)
+        let prodi=products[query.id]
+        let productDetailResponseHtml=replaceHtml(productDetailHmtl,prodi)
+        console.log(productDetailResponseHtml);
+        response.end(html.replace('{{%CONTENT%}}',productDetailResponseHtml))
     }
   
 }else{
