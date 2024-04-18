@@ -4,17 +4,17 @@ const url = require("url");
 const events = require("events");
 
 //USER DEFINED MODULE
-const replaceHtml = require("./modules/replaceHtml.js");
-const user = require("./modules/user");
+// const replaceHtml = require("./modules/replaceHtml.js");
+// const user = require("./modules/user");
 
 //READING HTML FILE
-const html = fs.readFileSync("./template/index.html", "utf-8");
-let products = JSON.parse(fs.readFileSync("./data/product.json", "utf-8"));
-let productListHmtl = fs.readFileSync("./template/product-list.html", "utf-8");
-let productDetailHmtl = fs.readFileSync(
-  "./template/product-details.html",
-  "utf-8"
-);
+// const html = fs.readFileSync("./template/index.html", "utf-8");
+// let products = JSON.parse(fs.readFileSync("./data/product.json", "utf-8"));
+// let productListHmtl = fs.readFileSync("./template/product-list.html", "utf-8");
+// let productDetailHmtl = fs.readFileSync(
+//   "./template/product-details.html",
+//   "utf-8"
+// );
 
 //MODULE HAS BEEN CREATED FOR replceHtml FUNCTION
 // function replaceHtml(template,product){
@@ -35,7 +35,7 @@ let productDetailHmtl = fs.readFileSync(
 //CREATE SERVER
 
 
-const server1 = http.createServer((request, response) => {
+// const server1 = http.createServer((request, response) => {
   //DESCTURCT QUERY AND PATH FROM URL
 //   let { query, pathname: path } = url.parse(request.url, true);
 //   if (path === "/" || path.toLowerCase() === "/home") {
@@ -75,12 +75,12 @@ const server1 = http.createServer((request, response) => {
 //     });
 //     response.end(html.replace("{{%CONTENT%}}", "ERROR 404"));
 //   }
-});
+// });
 
 //START SERVER
-server1.listen(8000, "127.0.0.1", () => {
-  console.log("Server has been started");
-});
+// server1.listen(8000, "127.0.0.1", () => {
+//   console.log("Server has been started");
+// });
 
 // fs.readFile('./files/input.txt','utf-8',(err,data)=>{
 //     console.log(data);
@@ -131,16 +131,16 @@ server1.listen(8000, "127.0.0.1", () => {
 
 //CUSTOM EVENT EMITTER
 
-let myEmitter = new user();
+// let myEmitter = new user();
 
-myEmitter.on("userCreated", (id, name) => {
-  console.log(`New user ${name} with ID ${id} is created`);
-});
-myEmitter.on("userCreated", (id, name) => {
-  console.log(`New user ${name} with ID ${id} is added to DATABSE`);
-});
+// myEmitter.on("userCreated", (id, name) => {
+//   console.log(`New user ${name} with ID ${id} is created`);
+// });
+// myEmitter.on("userCreated", (id, name) => {
+//   console.log(`New user ${name} with ID ${id} is added to DATABSE`);
+// });
 
-myEmitter.emit("userCreated", "F102", "Fazliddin");
+// myEmitter.emit("userCreated", "F102", "Fazliddin");
 
 
 //STREAMING
@@ -172,7 +172,28 @@ myEmitter.emit("userCreated", "F102", "Fazliddin");
 //    })
 // });
 //SOLUTION3
-server1.on('request',(req,res)=>{
-    let rs = fs.createReadStream("./files/large.txt");
-    rs.pipe(res)
+// server1.on('request',(req,res)=>{
+//     let rs = fs.createReadStream("./files/large.txt");
+//     rs.pipe(res)
+// })
+
+
+//EVENT LOOP
+
+console.log('Program has started');
+//STORED IN FIRST PHASE
+setTimeout(() => {
+  console.log('Timer callback ');
+},0);
+
+//IO TASK
+fs.readFile('./files/input.txt',()=>{
+  console.log('File read');
 })
+
+//STORED IN THIRD PHASE
+setImmediate(()=>{
+  console.log('Set Immediate callback');
+})
+
+console.log('Program has completed');
