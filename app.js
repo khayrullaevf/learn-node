@@ -33,6 +33,8 @@ let productDetailHmtl = fs.readFileSync(
 // }
 
 //CREATE SERVER
+
+
 const server1 = http.createServer((request, response) => {
   //DESCTURCT QUERY AND PATH FROM URL
 //   let { query, pathname: path } = url.parse(request.url, true);
