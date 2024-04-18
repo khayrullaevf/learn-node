@@ -182,18 +182,22 @@ const events = require("events");
 
 console.log('Program has started');
 //STORED IN FIRST PHASE
-setTimeout(() => {
-  console.log('Timer callback ');
-},0);
 
 //IO TASK
 fs.readFile('./files/input.txt',()=>{
   console.log('File read');
+  setTimeout(() => {
+    console.log('Timer callback ');
+  },0);
+
+  setImmediate(()=>{
+    console.log('Set Immediate callback');
+  })
+  
+  process.nextTick(()=>{console.log('Proccess nexttick')})
 })
 
 //STORED IN THIRD PHASE
-setImmediate(()=>{
-  console.log('Set Immediate callback');
-})
+
 
 console.log('Program has completed');
